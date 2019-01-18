@@ -1,9 +1,9 @@
-Code de DORIAN DITILYEU LPDIM CALAIS
-PHP Evaluation
-Installation de la Base de données :
- - Création de la base de données nommés "micro blog"
- - Création de la table "messages"
- - Création de la table "utilisateur"
+#Code de DORIAN DITILYEU LPDIM CALAIS
+#PHP Evaluation
+#Installation de la Base de données :
+# - Création de la base de données nommés "micro blog"
+# - Création de la table "messages"
+# - Création de la table "utilisateur"
  
 CREATE DATABASE micro blog;
  
