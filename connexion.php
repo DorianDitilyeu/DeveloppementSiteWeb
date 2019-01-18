@@ -1,3 +1,4 @@
+<!--Page de connexion-->
 <?php include ("includes/connexion.inc.php") ?>
 
 <!DOCTYPE html>
@@ -34,11 +35,12 @@
 
 <body id="page-top" class="index">
 
+<!--Ajout du haut de page-->
   <?php
     include ("includes/haut.inc.php");
   ?>
 
-    <!-- About Section -->
+    <!-- Champs textes permettant de rentrer les identifiants de l'utilisateur -->
     <form action="includes/verification.php" method="POST">
       <section>
           <div class="container">
@@ -57,6 +59,7 @@
       </section>
     </form>
 
+<!--Ajout du bas de page-->
     <?php
       include ("includes/bas.inc.php");
     ?>

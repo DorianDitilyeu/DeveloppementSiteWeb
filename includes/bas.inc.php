@@ -1,3 +1,4 @@
+<!-- Bas de page -->
     <!-- Footer -->
     <footer class="text-center">
         <div class="footer-above">

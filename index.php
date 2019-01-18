@@ -1,3 +1,4 @@
+<!--Page d'accueil-->
 <?php include ("includes/connexion.inc.php") ?>
 
 <!DOCTYPE html>
@@ -34,15 +35,15 @@
 
 <body id="page-top" class="index">
 
+  <!--Ajout du haut de page-->
   <?php
     include ("includes/haut.inc.php");
   ?>
 
-    <!-- About Section -->
     <section>
         <div class="container">
             <div class="row">
-              <?php if(isset($_GET['id'])){ ?>
+              <?php if(isset($_GET['id'])){ ?><!--Affichage d'envoi d'un message ou modification-->
 
                 <form action="includes/modification.php" method="Post">
                     <div class="col-sm-10">
@@ -101,8 +102,8 @@
           <?php } ?>
 
             <div class="row">
-                <div class="col-md-12">
-
+                <div class="col-md-12"><!--Ajout des commentaires présents dans la BDD-->
+                    <!--Ajout de 5 commentaires maximum par page-->
                     <?php
                       $nbCommentaire = 5;
                       $query = $pdo->query('SELECT id FROM messages');
@@ -117,9 +118,29 @@
                       }
                       $debut = ($directCommentaire-1)*$nbCommentaire;
                       $prep = $pdo->query('SELECT id, contenu, date, vote FROM messages ORDER BY date DESC LIMIT '.$debut.','.$nbCommentaire);
+                      ?>
+
+                      <!--Ajout de la pagination avec le thème BootStrap-->
+                      <nav aria-label="Page navigation" style="text-align:left;">
+                        <ul class="pagination pagination-lg">
+                          <?php
+                          for($i = 1;$i <= $totalCommentaire; $i++){
+                            /*if ($i = $_GET['page']) {
+                              echo('<li class="page-item"><span class="page-link">'.$i.'<span class="sr-only">(current)</span></span>');
+                            }
+                            else{*/
+                              echo('<li class="page-item"><a class"page-link" href="index.php?page='.$i.'">'.$i.'</a>');
+                            //}
+                          }
+                          ?>
+                        </ul>
+                      </nav>
+
+                      <?php
                       while ($donnees = $prep->fetch()) {
 
-                          ?><blockquote>
+                          ?>
+                          <blockquote><!--Ajout des boutons de modification, suppression et j'aime-->
                               <p><?php echo $donnees['contenu'];?></p>
                               <footer>
                                 <?php echo date('Y-m-d H:i:s', $donnees['date']);?>
@@ -142,23 +163,10 @@
 
                 </div>
             </div>
-            <nav aria-label="Page navigation" style="text-align:left;">
-              <ul class="pagination pagination-lg">
-                <?php
-                for($i = 1;$i <= $totalCommentaire; $i++){
-                  /*if ($i = $_GET['page']) {
-                    echo('<li class="page-item"><span class="page-link">'.$i.'<span class="sr-only">(current)</span></span>');
-                  }
-                  else{*/
-                    echo('<li class="page-item"><a class"page-link" href="index.php?page='.$i.'">'.$i.'</a>');
-                  //}
-                }
-                ?>
-              </ul>
-            </nav>
         </div>
     </section>
 
+<!--Ajout du bas de page-->
     <?php
       include ("includes/bas.inc.php");
     ?>

@@ -1,3 +1,4 @@
+<!--Page de suppression d'un commentaire-->
 <?php include ("includes/connexion.inc.php") ?>
 
 <!DOCTYPE html>
@@ -34,11 +35,12 @@
 
 <body id="page-top" class="index">
 
+<!--Ajout du haut de page-->
   <?php
     include ("includes/haut.inc.php");
   ?>
 
-    <!-- About Section -->
+    <!-- Commande permettant la suppression d'un commentaire -->
     <section>
         <div class="container">
             <h1>Suppression en cours</h1>
@@ -55,6 +57,7 @@
         </div>
     </section>
 
+<!--Ajout du bas de page-->
     <?php
       include ("includes/bas.inc.php");
     ?>
