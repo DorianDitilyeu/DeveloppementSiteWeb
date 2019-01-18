@@ -104,11 +104,21 @@
                 <div class="col-md-12">
 
                     <?php
-                      $query = "SELECT * FROM messages ORDER BY date desc";
-                      $stmt = $pdo->query($query);
-                      //var_dump($stmt->fetch());
+                      $nbCommentaire = 5;
+                      $query = $pdo->query('SELECT id FROM messages');
+                      $stmt = $query->rowCount();
+                      $totalCommentaire = ceil($stmt/$nbCommentaire);
+                      if(isset($_GET['page']) && !empty($_GET['page']) && $_GET['page'] > 0){
+                        $_GET['page'] = intval($_GET['page']);
+                        $directCommentaire = $_GET['page'];
+                      }
+                      else{
+                        $directCommentaire = 1;
+                      }
+                      $debut = ($directCommentaire-1)*$nbCommentaire;
+                      $prep = $pdo->query('SELECT id, contenu, date, vote FROM messages ORDER BY date DESC LIMIT '.$debut.','.$nbCommentaire);
+                      while ($donnees = $prep->fetch()) {
 
-                      while($donnees = $stmt->fetch()){
                           ?><blockquote>
                               <p><?php echo $donnees['contenu'];?></p>
                               <footer>
@@ -132,6 +142,20 @@
 
                 </div>
             </div>
+            <nav aria-label="Page navigation" style="text-align:left;">
+              <ul class="pagination pagination-lg">
+                <?php
+                for($i = 1;$i <= $totalCommentaire; $i++){
+                  /*if ($i = $_GET['page']) {
+                    echo('<li class="page-item"><span class="page-link">'.$i.'<span class="sr-only">(current)</span></span>');
+                  }
+                  else{*/
+                    echo('<li class="page-item"><a class"page-link" href="index.php?page='.$i.'">'.$i.'</a>');
+                  //}
+                }
+                ?>
+              </ul>
+            </nav>
         </div>
     </section>
 

@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-text">
-                        <span class="name">Le Twitter du pauvre</span>
+                        <span class="name">Le fil</span>
                         <hr class="star-light">
                     </div>
                 </div>

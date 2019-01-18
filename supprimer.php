@@ -44,7 +44,7 @@
             <h1>Suppression en cours</h1>
             <?php
               include ("includes/connexion.inc.php");
-              $supprimer = $_GET[supp];
+              $supprimer = $_GET["supp"];
 
               $query = "DELETE FROM messages WHERE id = $supprimer";
               $prep = $pdo->prepare($query);
