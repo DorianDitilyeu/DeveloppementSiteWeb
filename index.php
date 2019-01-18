@@ -47,6 +47,15 @@
                 <form action="includes/modification.php" method="Post">
                     <div class="col-sm-10">
                         <div class="form-group">
+                            <p><?php
+                                if (isset($_COOKIE['pseudo'])) {
+                                  echo 'Vous êtes connecté en tant que '.$_COOKIE['pseudo'].' !';
+                                }
+                                else {
+                                    echo 'Vous n\'êtes pas connecté';
+                                }
+                              ?>
+                            </p>
                             <textarea id="message" name="message" class="form-control" placeholder="Message"><?php
                               $identifiant = $_GET['id'];
                               $query = "SELECT * FROM messages WHERE id = '$identifiant'";
@@ -104,13 +113,15 @@
                               <p><?php echo $donnees['contenu'];?></p>
                               <footer>
                                 <?php echo date('Y-m-d H:i:s', $donnees['date']);?>
-                                <a href="index.php?id=<?php echo $donnees['id'] ?>" class="btn btn-success">Modifier</a>
-                                <a href="supprimer.php?supp=<?php echo $donnees['id'] ?>" class="btn btn-danger">Supprimer</a>
-                                <a href="" class="btn btn-info">J'aime</a>
+                                <a href="index.php?id=<?php echo $donnees['id']; ?>" class="btn btn-success">Modifier</a>
+                                <a href="supprimer.php?supp=<?php echo $donnees['id']; ?>" class="btn btn-danger">Supprimer</a>
+                                <a href="includes/vote.php?id=<?php echo $donnees['id'] ?>" id="aime" data-id="<?php echo $donnees['id']; ?>" class="btn btn-info">J'aime</a>
+
                               </footer>
                               <footer>
                                 <?php
                                   echo("J'aime : ");
+                                  echo $donnees['vote'];
                                 ?>
                               </footer>
                           </blockquote>
