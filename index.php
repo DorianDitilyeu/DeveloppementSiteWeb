@@ -1,5 +1,5 @@
 <!--Page d'accueil-->
-<?php include ("includes/connexion.inc.php") ?>
+<?php include ("fonctions/connexion.inc.php") ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -45,7 +45,7 @@
             <div class="row">
               <?php if(isset($_GET['id'])){ ?><!--Affichage d'envoi d'un message ou modification-->
 
-                <form action="includes/modification.php" method="Post">
+                <form action="fonctions/modification.php" method="Post">
                     <div class="col-sm-10">
                         <div class="form-group">
                             <p><?php
@@ -78,7 +78,7 @@
                 else{
               ?>
 
-                <form action="includes/message.php" method="Post">
+                <form action="fonctions/message.php" method="Post">
                     <div class="col-sm-10">
                         <div class="form-group">
                           <p><?php
@@ -146,8 +146,22 @@
                                 <?php echo date('Y-m-d H:i:s', $donnees['date']);?>
                                 <a href="index.php?id=<?php echo $donnees['id']; ?>" class="btn btn-success">Modifier</a>
                                 <a href="supprimer.php?supp=<?php echo $donnees['id']; ?>" class="btn btn-danger">Supprimer</a>
-                                <a href="includes/vote.php?id=<?php echo $donnees['id'] ?>" id="aime" data-id="<?php echo $donnees['id']; ?>" class="btn btn-info">J'aime</a>
-
+                                <?php
+                                /*function testip($id)
+                                {
+                                  include ("fonctions/connexion.inc.php");
+                                  $query = "SELECT ip FROM messages WHERE id = :id";
+                                  $prep = $pdo->prepare($query);
+                                  $prep->bindValue(':id', $id);
+                                  $prep->execute();
+                                }
+                                 if(testip($id) == $_SERVER['REMOTE_ADDR']){
+                                   echo "Vous avez déjà voté";
+                                 }
+                                 else{*/
+                                 ?>
+                                <a href="fonctions/vote.php?id=<?php echo $donnees['id'] ?>" id="aime" data-id="<?php echo $donnees['id']; ?>" class="btn btn-info">J'aime</a>
+                              <?php //} ?>
                               </footer>
                               <footer>
                                 <?php

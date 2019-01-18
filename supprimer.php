@@ -1,5 +1,5 @@
 <!--Page de suppression d'un commentaire-->
-<?php include ("includes/connexion.inc.php") ?>
+<?php include ("fonctions/connexion.inc.php") ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -45,7 +45,7 @@
         <div class="container">
             <h1>Suppression en cours</h1>
             <?php
-              include ("includes/connexion.inc.php");
+              include ("fonctions/connexion.inc.php");
               $supprimer = $_GET["supp"];
 
               $query = "DELETE FROM messages WHERE id = $supprimer";

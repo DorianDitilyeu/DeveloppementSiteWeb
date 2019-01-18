@@ -3,9 +3,10 @@
 
   include ("connexion.inc.php");
 
-  $query = "UPDATE messages SET vote = vote+1 WHERE id = :id"; //Commande SQL permettant l'ajout d'un vote dans la BDD
+  $query = "UPDATE messages SET vote = vote+1, ip = :ip WHERE id = :id"; //Commande SQL permettant l'ajout d'un vote dans la BDD
   $prep = $pdo->prepare($query);
   $prep->bindValue(':id', $_GET['id']); //Recupération de l'id du commentaire
+  $prep->bindValue(':ip', $_SERVER['REMOTE_ADDR']); //Récupération de l'adresse IP de l'utilisateur
 
   $prep->execute();
 

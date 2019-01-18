@@ -1,5 +1,5 @@
 <!--Page de connexion-->
-<?php include ("includes/connexion.inc.php") ?>
+<?php include ("fonctions/connexion.inc.php") ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -41,7 +41,7 @@
   ?>
 
     <!-- Champs textes permettant de rentrer les identifiants de l'utilisateur -->
-    <form action="includes/verification.php" method="POST">
+    <form action="fonctions/verification.php" method="POST">
       <section>
           <div class="container">
             <form>
