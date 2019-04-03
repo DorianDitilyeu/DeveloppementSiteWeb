@@ -8,6 +8,7 @@
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="index.php">Micro blog</a>
+
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -18,7 +19,10 @@
                     </li>
                     <li class="page-scroll">
                         <a href="connexion.php">Connexion</a>
+                    </li>
                 </ul>
+                <a href="http://facebook.com" class="sprite facebook"></a>
+                <a href="http://twitter.com" class="sprite twitter"></a>
             </div>
             <!-- /.navbar-collapse -->
         </div>

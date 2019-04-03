@@ -18,6 +18,7 @@
 
     <!-- Theme CSS -->
     <link href="css/freelancer.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -43,6 +44,7 @@
     <section>
         <div class="container">
             <div class="row">
+                
               <?php if(isset($_GET['id'])){ ?><!--Affichage d'envoi d'un message ou modification-->
 
                 <form action="fonctions/modification.php" method="Post">
@@ -78,7 +80,7 @@
                 else{
               ?>
 
-                <form action="fonctions/message.php" method="Post">
+                <form action="fonctions/message.php" method="Post" enctype="multipart/form-data">
                     <div class="col-sm-10">
                         <div class="form-group">
                           <p><?php
@@ -92,6 +94,7 @@
                           </p>
                             <textarea id="message" name="message" class="form-control" placeholder="Message"></textarea>
                         </div>
+                        <input type="file" name="fichier" id="fichier"/>
                     </div>
                     <div class="col-sm-2">
                         <button type="submit" class="btn btn-success btn-lg">Envoyer</button>
@@ -117,7 +120,7 @@
                         $directCommentaire = 1;
                       }
                       $debut = ($directCommentaire-1)*$nbCommentaire;
-                      $prep = $pdo->query('SELECT id, contenu, date, vote FROM messages ORDER BY date DESC LIMIT '.$debut.','.$nbCommentaire);
+                      $prep = $pdo->query('SELECT id, contenu, date, vote, image FROM messages ORDER BY date DESC LIMIT '.$debut.','.$nbCommentaire);
                       ?>
 
                       <!--Ajout de la pagination avec le thème BootStrap-->
@@ -142,6 +145,10 @@
                           ?>
                           <blockquote><!--Ajout des boutons de modification, suppression et j'aime-->
                               <p><?php echo $donnees['contenu'];?></p>
+                              <?php if ($donnees['image'] != null){ ?>
+                                <img class="img-thumbnail" width="200px" src='fonctions/img/<?php echo $donnees['image'];?>' />
+                                <p></p>
+                              <?php } ?>
                               <footer>
                                 <?php echo date('Y-m-d H:i:s', $donnees['date']);?>
                                 <a href="index.php?id=<?php echo $donnees['id']; ?>" class="btn btn-success">Modifier</a>
