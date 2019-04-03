@@ -1,15 +1,3 @@
-.sprite{
-  display: inline-block;
-  width: 60px;
-  height: 60px;
-}
-
-.facebook{
-  background-image: url(../fonctions/img/facebook.png);
-  background-position: center;
-}
-
-.twitter{
-  background-image: url(../fonctions/img/twitter.png);
-  background-position: center;
-}
+.sprite{display: inline-block;width: 60px;height: 60px;}
+.facebook{background-image: url(../fonctions/img/facebook.png);background-position: center;}
+.twitter{background-image: url(../fonctions/img/twitter.png);background-position: center;}
